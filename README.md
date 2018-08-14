@@ -47,7 +47,7 @@ You must have ssh access to all the nodes. You also need root :)
 1. Install the pre-requisites for starting the master:
 
    ```bash
-   git clone https://github.com/data-8/kubeadm-bootstrap
+   git clone https://github.com/cheese-hub/kubeadm-bootstrap
    cd kubeadm-bootstrap
    sudo ./install-kubeadm.bash
    ```
@@ -69,7 +69,7 @@ You must have ssh access to all the nodes. You also need root :)
    a. A Kubernetes Master with all the required components (etcd, apiserver,
       scheduler and controller-manager)
 
-   b. Flannel with VXLAN backend for the Pod Network
+   b. Weave with Network Policy support for the Pod Network
 
    c. Helm for installing software on to the cluster.
 
@@ -121,7 +121,7 @@ as a Kubernetes master for other nodes!
 2. On the worker node you want to join to the cluster, install the
    pre-requisites:
    ```bash
-   git clone https://github.com/data-8/kubeadm-bootstrap
+   git clone https://github.com/cheese-hub/kubeadm-bootstrap
    cd kubeadm-bootstrap
    sudo ./install-kubeadm.bash
    ```
@@ -139,7 +139,7 @@ as a Kubernetes master for other nodes!
       `Ready` state.
 
    b. On the master, run `sudo kubectl --namespace=kube-system get pod -o wide`. This should show
-      you a `kube-proxy`, a `kube-flannel` and `kube-controller` pod running on your
+      you a `kube-proxy`, a `weave-net` and `kube-controller` pod running on your
       new node in `Ready` state. If it is in `Pending` state, give it a few minutes
       to get to `Ready`. If it's in `Error` or `CrashLoopBackoff` you have a
       problem.
