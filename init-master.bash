@@ -8,8 +8,8 @@ mkdir -p $HOME/.kube
 cp --remove-destination /etc/kubernetes/admin.conf $HOME/.kube/config
 chown ${SUDO_UID} $HOME/.kube/config
 
-# Install flannel
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml
+# Install Weave; replaces Flannel
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 
 # Make master node a running worker node too!
 # FIXME: Use taint tolerations instead in the future
